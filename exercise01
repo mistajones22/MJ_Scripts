@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# enter Username of the newuser
+
+read -p 'Enter the new username: ' USER_NAME 
+
+# Enter the true name of the user
+
+read -p 'Enter the true name of the user: ' COMMENT
+
+# Enter password to be used for new user
+
+read -p 'Enter the password of the user: ' PASSWORD
+
+
+# Create the new user
+
+useradd  -c "${COMMENT}" -m "${USER_NAME}"
+
+
+# Create password for new user
+
+echo ${PASSWORD} | passwd --stdin ${USER_NAME}
+
+
+# Force user to change password upon first entry
+
+passwd -e ${USER_NAME}
+
+
+
+
+
